@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Todos</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+          text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+          background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+         background-color: #3430ff;
+        }
+        table#t01 th {
+          background-color: black;
+          color: #ff2d3b;
+        }
+    </style>
+</head>
+<body>
+    <h3> hello {{ user }}  <a href="login/logout">logout</a></h3>
+
+    <a href="album/addTask">add task</a>
+    <h4>Task List</h4>
+    <table style="border: 1px solid black;">
+
+        <tr>
+            <th>task title</th> <th>   </th><th>task description</th><th>   </th><th>choice</th>
+        </tr>
+    {% for i in task %}
+        <tr>
+            <th>{{  i.task_title }}</th> <th>   </th><th>{{ i.task_detail }}</th><th>   </th> <th> <a href="{% url 'album:task_id' i.id %}">remove it</a></th>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

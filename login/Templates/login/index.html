@@ -1,0 +1,14 @@
+
+<ui><h2>registered username's</h2>
+    {%  for user in all_user %}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+    <h2>not a user?? register here</h2>
+    <h3> {{ str }}</h3>
+    <form method=POST action='signup'>
+        {%  csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+
+</ui>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Your todos</title>
+</head>
+<body>
+    {% if flag == 1 %}
+        <h3>Welcome {{ username }} <a href="login/logout">logout</a></h3>
+        <a href="/album">YOUR TODOS</a>
+
+    {%  endif %}
+    {% if flag == 0 %}
+        <h3> Login to Continue to your Todo's</h3>
+        <a href="/login">LOGIN</a>
+    {% endif %}
+</body>
+</html>
