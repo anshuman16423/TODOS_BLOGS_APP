@@ -1,4 +1,4 @@
-# TODOS_Manager
+# TODOS_BLOGS_APP
 - A simple Djamgo App for managing your day to day TODO List.
 - It contains secured login facillity for each user.
 - Each Username can be ued only once.
