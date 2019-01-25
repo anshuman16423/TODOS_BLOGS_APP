@@ -4,8 +4,7 @@ from django.db import models
 # Create your models here.
 
 class blog(models.Model):
-    date = models.DateField()
-    time = models.TimeField()
+    datetime = models.DateTimeField()
     user = models.CharField(max_length=64)
     title = models.CharField(max_length=64)
     tags = models.CharField(max_length=256)

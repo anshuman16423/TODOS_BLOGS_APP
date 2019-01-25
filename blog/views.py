@@ -3,6 +3,8 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from forms import BlogEntry
 from models import blog
+from datetime import datetime
+
 # Create your views here.
 def index(request):
     temp = loader.get_template('blog/index.html')
@@ -14,14 +16,17 @@ def create_blog(request):
         form = BlogEntry(request.POST)
         if form.is_valid():
             ent = blog()
-            ent.title = form.cleaned_data('blogTitle')
-            ent.tags = form.cleaned_data('blogTags')
-            ent.content = form.cleaned_data('blogContent')
+            ent.user = request.session['username']
+            ent.datetime = datetime.now()
+            ent.title = form.cleaned_data['blogTitle']
+            ent.tags = form.cleaned_data['blogTags']
+            ent.content = form.cleaned_data['blogContent']
             ent.save()
-            HttpResponseRedirect('../')
+            #print 'form saved'
+            return HttpResponseRedirect('../blog')
     form = BlogEntry()
     context = dict()
     context['form'] = form
+    temp = loader.get_template('blog/register.html')
 
-
-    return HttpResponse()
+    return HttpResponse(temp.render(context, request))
