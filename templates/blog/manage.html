@@ -9,7 +9,7 @@
     <h2>YOUR BLOGS TITLE AND UNIQUE ID</h2>
     <ul>
     {% for i in list %}
-        <li><h4>Unique ID: {{ i.id }} </h4> {{ i.title }} <a href="blog/edit/{{ i.id }}">edit</a> <a href="#">delete</a> </li>
+        <li><h4>Unique ID: {{ i.id }} </h4> {{ i.title }} <a href="blog/edit/{{ i.id }}">edit</a> <a href="blog/delete/{{ i.id }}">delete</a> </li>
     {% endfor %}
     </ul>
 </body>

@@ -69,4 +69,6 @@ def edit(request, blog_edit):
 
 
 def delete(request, blog_delete):
-    return HttpResponse()
+    blog.objects.filter(id=blog_delete).delete()
+
+    return HttpResponseRedirect('/blog')

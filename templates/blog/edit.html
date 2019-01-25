@@ -5,8 +5,8 @@
     <title>Create Blog</title>
 </head>
 <body>
-    <h1>Edit your blogs here</h1>
-    <form action="/blog", method="post">
+    <h1>Edit your blog here</h1>
+    <form action="/blog/addBlog", method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit">
