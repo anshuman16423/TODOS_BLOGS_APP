@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Blog Feed</title>
 </head>
 <body>
-
+    <h3>Welcome {{ username }}</h3>
+    <h4>Your Feed</h4>
+    {% for i in objects %}
+        <h1>{{ i.title }}</h1>
+        <h4>tags: {{ i.tags }}</h4>
+        <p>{{  i.content }}</p>
+    {%  endfor %}
 </body>
 </html>

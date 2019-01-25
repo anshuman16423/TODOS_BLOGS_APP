@@ -5,10 +5,20 @@ from forms import BlogEntry
 from models import blog
 from datetime import datetime
 
+
 # Create your views here.
 def index(request):
+    if 'username' not in request.session:
+        return HttpResponseRedirect('../login')
+
     temp = loader.get_template('blog/index.html')
-    return HttpResponse(temp.render({}, request))
+    blogs_all = list(blog.objects.all())
+    blogs_all.sort(key=lambda x: x.datetime, reverse=True)
+    context = dict()
+    context['username'] = request.session['username']
+    context['objects'] = blogs_all
+
+    return HttpResponse(temp.render(context, request))
 
 
 def create_blog(request):
@@ -22,7 +32,6 @@ def create_blog(request):
             ent.tags = form.cleaned_data['blogTags']
             ent.content = form.cleaned_data['blogContent']
             ent.save()
-            #print 'form saved'
             return HttpResponseRedirect('../blog')
     form = BlogEntry()
     context = dict()
