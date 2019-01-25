@@ -22,6 +22,8 @@ def index(request):
 
 
 def create_blog(request):
+    if 'username' not in request.session:
+        return HttpResponseRedirect('../login')
     if request.method == 'POST':
         form = BlogEntry(request.POST)
         if form.is_valid():
@@ -39,3 +41,32 @@ def create_blog(request):
     temp = loader.get_template('blog/register.html')
 
     return HttpResponse(temp.render(context, request))
+
+
+def manage(request):
+    if 'username' not in request.session:
+        return HttpResponseRedirect('../login')
+
+    user_blog = blog.objects.filter(user=request.session['username'])
+    context = dict()
+    context['list'] = user_blog
+    context['user'] = request.session['username']
+    temp = loader.get_template('blog/manage.html')
+    return HttpResponse(temp.render(context, request))
+
+
+def edit(request, blog_edit):
+
+    blog_data = blog.objects.get(id = blog_edit)
+    d=dict()
+    d['blogTitle'] = blog_data.title
+    d['blogTags'] = blog_data.tags
+    d['blogContent'] = blog_data.content
+    blog.objects.filter(id=blog_edit).delete()
+    form = BlogEntry(d)
+    temp = loader.get_template('blog/edit.html')
+    return HttpResponse(temp.render({'form':form}, request))
+
+
+def delete(request, blog_delete):
+    return HttpResponse()

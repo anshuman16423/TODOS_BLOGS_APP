@@ -8,12 +8,13 @@
     {% if flag == 1 %}
         <h3>Welcome {{ username }} <a href="login/logout">logout</a></h3>
         <a href="/album">YOUR TODOS</a>
-
+        <a href="/blog">BLOG FEED</a>
+        <a href="blogs/manage">MANAGE YOUR BLOGS</a>
     {%  endif %}
     {% if flag == 0 %}
         <h3> Login to Continue to your Todo's</h3>
         <a href="/login">LOGIN</a>
-        <a href="/blog">BLOG FEED</a>
+
     {% endif %}
 </body>
 </html>

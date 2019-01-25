@@ -6,6 +6,9 @@
 </head>
 <body>
     <h3>Welcome {{ username }}</h3>
+    <a href="../album">TODOS</a>
+    <a href="blog/addBlog">ADD BLOG</a>
+    <a href="blog/manage">MANAGE YOUR BLOGS</a>
     <h4>Your Feed</h4>
     {% for i in objects %}
         <h1>{{ i.title }}</h1>

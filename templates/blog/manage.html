@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>manage</title>
+</head>
+<body>
+    <h3> welcome {{ user }}</h3>
+    <h2>YOUR BLOGS TITLE AND UNIQUE ID</h2>
+    <ul>
+    {% for i in list %}
+        <li><h4>Unique ID: {{ i.id }} </h4> {{ i.title }} <a href="blog/edit/{{ i.id }}">edit</a> <a href="#">delete</a> </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
